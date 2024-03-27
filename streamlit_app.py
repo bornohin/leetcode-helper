@@ -2,7 +2,7 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 import altair as alt
-from . utility import scrape_links
+from my_helper_utility_for_scraping import scrape_links
 
 scrape = False
 
