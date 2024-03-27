@@ -48,7 +48,7 @@ if scrape:
   # Test the function with a sample URL
   url = 'https://www.techinterviewhandbook.org/algorithms/string/'
   df_scrape = scrape_links(url)
-  st.dataframe(data=df_scrape, width=None, height=None, *, use_container_width=False, hide_index=None, column_order=None, column_config=None)
+  st.dataframe(data=df_scrape, width=None, height=None, use_container_width=False, hide_index=None, column_order=None, column_config=None)
 
 df_chart = pd.melt(df_editor.reset_index(), id_vars='year', var_name='genre', value_name='gross')
 
