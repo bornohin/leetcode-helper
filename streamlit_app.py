@@ -40,7 +40,7 @@ df_editor = st.data_editor(reshaped_df, height=212, use_container_width=True,
                             column_config={"year": st.column_config.TextColumn("Year")},
                             num_rows="dynamic")
 
-df_editor2 = st.data_editor(reshaped_df, height=212, use_container_width=True,
+df_editor2 = st.data_editor(reshaped_df, height=200, use_container_width=True,
                             column_config={"year": st.column_config.TextColumn("Year")},
                             num_rows="dynamic")
 
