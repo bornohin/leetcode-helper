@@ -38,5 +38,3 @@ def scrape_links(url):
     # If the request was not successful, return None
     else:
         return None
-
-
