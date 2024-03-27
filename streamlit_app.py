@@ -4,7 +4,7 @@ import pandas as pd
 import altair as alt
 
 # Page title
-st.set_page_config(page_title='Leetcode Problem Finder', page_icon='📊')
+st.set_page_config(page_title='Leetcode Problem Finder', page_icon='⍰')
 st.title('⍰ Leetcode Problem Finder')
 
 with st.expander('About this app'):
@@ -39,6 +39,11 @@ reshaped_df = reshaped_df.sort_values(by='year', ascending=False)
 df_editor = st.data_editor(reshaped_df, height=212, use_container_width=True,
                             column_config={"year": st.column_config.TextColumn("Year")},
                             num_rows="dynamic")
+
+df_editor2 = st.data_editor(reshaped_df, height=212, use_container_width=True,
+                            column_config={"year": st.column_config.TextColumn("Year")},
+                            num_rows="dynamic")
+
 df_chart = pd.melt(df_editor.reset_index(), id_vars='year', var_name='genre', value_name='gross')
 
 # Display chart
