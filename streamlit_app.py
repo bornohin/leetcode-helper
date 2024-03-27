@@ -2,6 +2,9 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 import altair as alt
+from . utility import scrape_links
+
+scrape = False
 
 # Page title
 st.set_page_config(page_title='Leetcode Problem Finder', page_icon='⍰')
@@ -40,9 +43,14 @@ df_editor = st.data_editor(reshaped_df, height=212, use_container_width=True,
                             column_config={"year": st.column_config.TextColumn("Year")},
                             num_rows="dynamic")
 
-df_editor2 = st.data_editor(reshaped_df, height=200, use_container_width=True,
-                            column_config={"year": st.column_config.TextColumn("Year")},
-                            num_rows="dynamic")
+scrape = True
+if scrape:
+  # Test the function with a sample URL
+  url = 'https://www.techinterviewhandbook.org/algorithms/string/'
+  df_scrape = scrape_links(url)
+  reshaped_df_scrape = df_scrape.pivot_table()
+
+  df_scrape_editor = st.data_editor(reshaped_df_scrape, height=200, use_container_width=True)
 
 df_chart = pd.melt(df_editor.reset_index(), id_vars='year', var_name='genre', value_name='gross')
 
