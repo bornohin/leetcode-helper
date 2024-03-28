@@ -44,7 +44,6 @@ df_editor = st.data_editor(reshaped_df, height=212, use_container_width=True,
 
 
 df_scrape = scrape_links('algorithms/matrix/', 'https://leetcode.com/problems', 'matrix.csv')
-print(df_scrape)
 # st.write(df_scrape)
 st.dataframe(data=df_scrape, width=None, height=None, use_container_width=False, hide_index=False, column_order=None, column_config=None)
 
