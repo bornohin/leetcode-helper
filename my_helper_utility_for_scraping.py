@@ -52,4 +52,4 @@ def check_csv(file_name):# Check if the file exists
         # st.write(f"CSV file '{file_name}' created successfully.")
         print('no file')
 
-check_csv('movie_metadata.csv')
+check_csv('movie_medata.csv')
