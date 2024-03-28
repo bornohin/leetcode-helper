@@ -42,8 +42,7 @@ df_editor = st.data_editor(reshaped_df, height=212, use_container_width=True,
                             column_config={"year": st.column_config.TextColumn("Year")},
                             num_rows="dynamic")
 
-
-df_scrape = scrape_links('algorithms/matrix/', 'https://leetcode.com/problems', 'matrix.csv')
+df_scrape = scrape_links('algorithms/hash-table/', 'https://leetcode.com/problems', 'hash-table.csv')
 # st.write(df_scrape)
 st.dataframe(data=df_scrape, width=None, height=None, use_container_width=False, hide_index=False, column_order=None, column_config=None)
 
