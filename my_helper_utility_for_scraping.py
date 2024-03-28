@@ -1,6 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
+import os
+import streamlit as st
 
 def scrape_links(url):
     # Send request to the URL
@@ -38,3 +40,16 @@ def scrape_links(url):
     # If the request was not successful, return None
     else:
         return None
+
+def check_csv(file_name):# Check if the file exists
+    full_dir = 'data/' + file_name
+    if os.path.isfile(full_dir):
+        # st.write(f"CSV file '{file_name}' already exists.")
+        print('file exists')
+    else:
+        # Run function to create the CSV file
+        # create_csv(file_name)
+        # st.write(f"CSV file '{file_name}' created successfully.")
+        print('no file')
+
+check_csv('movie_metadata.csv')
