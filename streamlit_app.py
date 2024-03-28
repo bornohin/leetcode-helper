@@ -57,6 +57,6 @@ st.dataframe(data=df_scrape, width=None, height=None, use_container_width=False,
 # st.altair_chart(chart, use_container_width=True)
 
 # print(scrape_links('https://www.techinterviewhandbook.org/algorithms/string/', 'https://leetcode.com/problems'))
-# topic_file = "data/topics.csv"
-# get_topics = fetch_topic(topic_file)
+topic_file = "topics.csv"
+get_topics = fetch_topic(topic_file)
 # print(get_topics)
