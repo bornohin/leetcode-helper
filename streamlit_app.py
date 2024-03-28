@@ -3,9 +3,7 @@ import numpy as np
 import os
 import pandas as pd
 import altair as alt
-from my_helper_utility_for_scraping import scrape_links
-
-scrape = False
+from databuilder_utils import *
 
 # Page title
 st.set_page_config(page_title='Leetcode Problem Finder', page_icon='⍰')
@@ -16,7 +14,7 @@ with st.expander('About this app'):
   st.info('This app shows the use of Pandas for data wrangling, Altair for chart creation and editable dataframe for data interaction.')
   st.markdown('**How to use the app?**')
   st.warning('To engage with the app, 1. Select genres of your interest in the drop-down selection box and then 2. Select the year duration from the slider widget. As a result, this should generate an updated editable DataFrame and line plot.')
-  
+
 st.subheader('Which Movie Genre performs ($) best at the box office?')
 
 # Load data
@@ -44,19 +42,25 @@ df_editor = st.data_editor(reshaped_df, height=212, use_container_width=True,
                             column_config={"year": st.column_config.TextColumn("Year")},
                             num_rows="dynamic")
 
-scrape = True
-if scrape:
-  # Test the function with a sample URL
-  url = 'https://www.techinterviewhandbook.org/algorithms/string/'
-  df_scrape = scrape_links(url)
-  st.dataframe(data=df_scrape, width=None, height=None, use_container_width=False, hide_index=False, column_order=None, column_config=None)
 
-df_chart = pd.melt(df_editor.reset_index(), id_vars='year', var_name='genre', value_name='gross')
+response = requests.get("https://www.techinterviewhandbook.org/algorithms/matrix")
+print(response.status_code)
+df_scrape = scrape_links('algorithms/matrix/', 'https://leetcode.com/problems', 'matrix.csv')
+print(df_scrape)
+st.write(df_scrape)
+# st.dataframe(data=df_scrape, width=None, height=None, use_container_width=False, hide_index=False, column_order=None, column_config=None)
+
+# df_chart = pd.melt(df_editor.reset_index(), id_vars='year', var_name='genre', value_name='gross')
 
 # Display chart
-chart = alt.Chart(df_chart).mark_line().encode(
-            x=alt.X('year:N', title='Year'),
-            y=alt.Y('gross:Q', title='Gross earnings ($)'),
-            color='genre:N'
-            ).properties(height=320)
-st.altair_chart(chart, use_container_width=True)
+# chart = alt.Chart(df_chart).mark_line().encode(
+#             x=alt.X('year:N', title='Year'),
+#             y=alt.Y('gross:Q', title='Gross earnings ($)'),
+#             color='genre:N'
+#             ).properties(height=320)
+# st.altair_chart(chart, use_container_width=True)
+
+# print(scrape_links('https://www.techinterviewhandbook.org/algorithms/string/', 'https://leetcode.com/problems'))
+# topic_file = "data/topics.csv"
+# get_topics = fetch_topic(topic_file)
+# print(get_topics)
