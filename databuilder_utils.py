@@ -65,7 +65,7 @@ def scrape_links(page, topic_match, file_name):
 
 def fetch_topic(csv_file):
     if check_csv(csv_file):
-        df = pd.read_csv(csv_file)
+        df = pd.read_csv('data/' + csv_file)
     else:
         page = "coding-interview-study-plan/"
         topic_match = "algorithms/"
